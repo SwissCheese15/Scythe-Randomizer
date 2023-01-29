@@ -1,2 +1,2 @@
-Random game generator for the board game "Scythe"
+## Random game generator for the board game "Scythe"
 
