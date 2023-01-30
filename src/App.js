@@ -22,7 +22,11 @@ function App() {
     const [fenrisHome, setFenrisHome] = useState()
     const [vesnaHome, setVesnaHome] = useState()
 
-    const [random, setRandom] = useState(false)
+    // rememberance arrays to avoid repeat combos
+    const [rememberNation, setRememberNation] = useState([])
+    const [rememberBoard, setRememberBoard] = useState([])
+
+    const [ready, setReady] = useState(true)
     const [rotate, setRotate] = useState(false)
     const [moreInfo, setMoreInfo] = useState(false)
 
@@ -56,13 +60,12 @@ function App() {
         "Stealth"
     ]
 
-    // placeholder array for saving the random nations
-    let nationArray = []
-    // placeholder array for saving the random boards
-    let boardArray = []
+    // placeholder array for saving the random nations and boards
+    let nationArray
+    let boardArray
 
     // Randomizers
-    const randomNationAndBoard = (times) => {
+    const randomNationAndBoard = () => {
 
         // emptying the placeholder arrays for the next round
         boardArray = []
@@ -74,12 +77,15 @@ function App() {
         // running the function depending on the number of players
         for (let i = 0; i < players; i++) {
 
-            // Recursive function to check if nation is already taken
+            
             const createRandom = () => {
+                // generating the random value
                 randomNation = Math.floor(Math.random()*9)
+                // Recursive function to check if nation is already taken
                 if(nationArray.includes(nations[randomNation])) {
                     createRandom()
                 }
+                // ruling out expansion nations
                 if (!invaders && (randomNation === 5 || randomNation === 6 )) {
                     createRandom()
                 }
@@ -92,6 +98,19 @@ function App() {
             // filling the placeholder array
             nationArray.push(nations[randomNation])
         }
+        // ruling out repeat nations and boards for same player
+        const checkRepeat = () => {
+            console.log(nationArray)
+            console.log(rememberNation)
+            for (let i = 0; i < nationArray.length; i++) {
+                if (nationArray[i] === rememberNation[i]) {
+                    console.log("caught")
+                    return randomNationAndBoard()
+                }
+            }
+        }
+        checkRepeat()
+
         // generate nation specific info when Vesna or Fenris are selected
         nationArray.includes("Vesna") ? randomMechs(true) : randomMechs(false)
         nationArray.includes("Vesna") ? randomVesnaHome(true) : randomVesnaHome(false)
@@ -131,6 +150,10 @@ function App() {
                     return
                 }
             }
+
+            // setting rememberance arrays
+                setRememberNation(nationArray)
+
             // updating state
             setNation(nationArray)
             setBoard(boardArray)
@@ -213,15 +236,40 @@ function App() {
         setPlayers(input)
     }
 
-    const handleButton = () => {
-        randomNationAndBoard()
-        randomAirship()
-        randomEnding()
-        randomMode()
-        emblemsStartRotating()
-        movingEmblems()
-        setRandom(true)
+    const handleRandomButton = () => {
+        if(ready) {
+            randomNationAndBoard()
+            randomAirship()
+            randomEnding()
+            randomMode()
+            emblemsStartRotating()
+            movingEmblems()
+            setReady(false)
+        }
     }
+
+    // window resize
+
+    let vw = window.innerWidth
+    let vh = window.innerHeight
+
+    function reportWindowSize() {
+        vw = window.innerWidth
+        vh = window.innerHeight
+
+        if (!rotate) {
+            for (let i = 1; i <= nation.length; i++) {
+                let image = document.getElementById(i)
+                let coordinates = image.getBoundingClientRect()
+                let x = Math.floor(coordinates.x) -vh*0.08 + "px"
+                let y = Math.floor(coordinates.y) -vh*0.01 + "px"
+                r.style.setProperty("--" + nation[i-1] + "PosX", x);
+                r.style.setProperty("--" + nation[i-1] + "PosY", y);
+            }
+        }
+    }
+
+    window.onresize = reportWindowSize;
 
     // Emblem Logic
 
@@ -229,14 +277,18 @@ function App() {
 
     const handleInvadersTrue = () => {
         setInvaders(true)
-        r.style.setProperty("--VesnaPosX", "19vw");
-        r.style.setProperty("--FenrisPosX", "75vw");
+        if (!rotate && !moreInfo) {
+            r.style.setProperty("--VesnaPosX", "19vw");
+            r.style.setProperty("--FenrisPosX", "75vw");
+        }
     }
 
     const handleInvadersFalse = () => {
         setInvaders(false)
-        r.style.setProperty("--VesnaPosX", "26vw");
-        r.style.setProperty("--FenrisPosX", "68vw");
+        if (!rotate && !moreInfo) {
+            r.style.setProperty("--VesnaPosX", "26vw");
+            r.style.setProperty("--FenrisPosX", "68vw");
+        }
     }
 
     const emblemsStartRotating = () => {
@@ -254,19 +306,15 @@ function App() {
             const delay = async (ms = 3000) =>
                 new Promise(resolve => setTimeout(resolve, ms))
 
-            console.log(nationArray)
-
             async function oneByOne() {
+
                 for (let i = 1; i <= nationArray.length; i++) {
                     let image = document.getElementById(i)
                     let coordinates = image.getBoundingClientRect()
-                    console.log(coordinates)
-                    let x = Math.floor(coordinates.x) -65 + "px"
-                    let y = Math.floor(coordinates.y) -13 + "px"
+                    let x = Math.floor(coordinates.x) -vh*0.08 + "px"
+                    let y = Math.floor(coordinates.y) -vh*0.01 + "px"
                     r.style.setProperty("--" + nationArray[i-1] + "PosX", x);
                     r.style.setProperty("--" + nationArray[i-1] + "PosY", y);
-
-                    // visibility chosen nation p tag
                     
                     await delay(3000)
                 }
@@ -275,7 +323,29 @@ function App() {
               }
               oneByOne()
         }, 3000);     
+    }
 
+    const handleResetButton = () => {
+        setReady(true)
+        setMoreInfo(false)
+        r.style.setProperty("--VesnaPosX", "26vw")
+        r.style.setProperty("--VesnaPosY", "34vh")
+        r.style.setProperty("--TogawaPosX", "26vw")
+        r.style.setProperty("--TogawaPosY", "34vh")
+        r.style.setProperty("--NordicPosX", "33vw")
+        r.style.setProperty("--NordicPosY", "34vh")
+        r.style.setProperty("--RusvietPosX", "40vw")
+        r.style.setProperty("--RusvietPosY", "34vh")
+        r.style.setProperty("--CrimeaPosX", "47vw")
+        r.style.setProperty("--CrimeaPosY", "34vh")
+        r.style.setProperty("--PolaniaPosX", "54vw")
+        r.style.setProperty("--PolaniaPosY", "34vh")
+        r.style.setProperty("--SaxonyPosX", "61vw")
+        r.style.setProperty("--SaxonyPosY", "34vh")
+        r.style.setProperty("--AlbionPosX", "68vw")
+        r.style.setProperty("--AlbionPosY", "34vh")
+        r.style.setProperty("--FenrisPosX", "68vw")
+        r.style.setProperty("--FenrisPosY", "34vh")
     }
 
     return (
@@ -329,7 +399,8 @@ function App() {
                 </div>
             </div>
             <div className='randomBtnDiv'>
-                <button className='randomBtn' onClick={() => handleButton()}>Generate Random Game</button>
+                <button id='randomBtn' className={!ready? "notReady" : ""} onClick={() => handleRandomButton()}>Generate Random Game</button>
+                <button id='resetBtn' onClick={() => handleResetButton()}>Reset</button>
             </div>
             <div id='emblems' className={rotate ? "rotate" : ""}>
                 <img id='moveVesna' className={!rise ? "invisible" : ""} src='/images/vesna.png'/>
@@ -346,21 +417,21 @@ function App() {
                 <div className='nationsAndBoards'>
                     <div className='nations'>
                         {nation.map((team, index) => 
-                            <div>
-                                <p key={team} id={index + 1}>Player {index + 1}: </p>
-                                <p id={"actual"} className={!moreInfo ? "invisible" : ""}>{team}</p>
+                            <div key={team}>
+                                <p id={index + 1} className={ready ? "invisible" : ""}>Player {index + 1}: </p>
+                                <p id={"actual"} className={!moreInfo || ready ? "invisible" : ""}>{team}</p>
                             </div>
                         )}
                     </div>
                     <div className='boards'>
                         {board.map((board) => 
-                            <div>
-                                <p key={board} id={"actual"} className={!moreInfo ? "invisible" : ""}>{board}</p>
+                            <div key={board}>
+                                <p id={"actual"} className={!moreInfo || ready ? "invisible" : ""}>{board}</p>
                             </div>
                         )}
                     </div>
                 </div>
-                <div id='moreInfo' className={!moreInfo || (!rise && !wind) ? "invisible" : ""}>
+                <div id='moreInfo' className={!moreInfo || (!rise && !wind) || ready ? "invisible" : ""}>
                     <div>
                         {fenrisHome ? <p>Fenris Home: {fenrisHome}</p> : ""}
                         {vesnaHome ? <p>Vesna Home: {vesnaHome}</p> : ""}
@@ -379,7 +450,7 @@ function App() {
             </div>
             <div className='footer'>
                 <div>
-                    <p>Website Created by Manuel Winkler</p>
+                    <p>Website created by Manuel Winkler</p>
                 </div>
                 <div className='contactLinks'>
                     <a href='https://github.com/SwissCheese15' target="_blank" title='GitHub'>
