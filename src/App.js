@@ -12,6 +12,7 @@ function App() {
 
     const [nation, setNation] = useState([])
     const [board, setBoard] = useState([])
+    const [building, setBuilding] = useState()
     const [mode, setMode] = useState()
     const [airship, setAirship] = useState()
     const [offensiveAirship, setOffensiveAirship] = useState()
@@ -35,10 +36,10 @@ function App() {
     const boards = ["Industrial", "Engineering", "Patriotic", "Mechanical", "Agricultural", "Militant", "Innovative"]
     const modes = ["War", "Peace", "Normal"]
     const airships = ["Yes", "No"]
-    const offensiveAirships = [1,2,3,4,5,6]
-    const defensiveAirships = [1,2,3,4,5,6]
+    const offensiveAirships = [1,2,3,4,5,6,7,8]
+    const defensiveAirships = [9,10,11,12,13,14,15,16]
     const endings = ["Yes", "No"]
-    const endingCards = [1,2,3,4,5,6,7,8,9]
+    const endingCards = [1,2,3,4,5,6,7,8]
     const fenrisMechAbilities = [
         "Scout",
         "Feint",
@@ -98,10 +99,8 @@ function App() {
             // filling the placeholder array
             nationArray.push(nations[randomNation])
         }
-        // ruling out repeat nations and boards for same player
+        // ruling out repeat nations for same player
         const checkRepeat = () => {
-            console.log(nationArray)
-            console.log(rememberNation)
             for (let i = 0; i < nationArray.length; i++) {
                 if (nationArray[i] === rememberNation[i]) {
                     console.log("caught")
@@ -139,6 +138,18 @@ function App() {
                 boardArray.push(boards[randomBoard])
             }
 
+            // ruling out repeat boards for same player
+            const checkRepeat = () => {
+                console.log(boardArray)
+                for (let i = 0; i < boardArray.length; i++) {
+                    if (boardArray[i] === rememberBoard[i]) {
+                        console.log("caught")
+                        return randomBoardFunc()
+                    }
+                }
+            }
+            checkRepeat()
+
             // check for banned combinations
             for (let i = 0; i < boardArray.length; i++) {
                 if (boardArray[i] === "Industrial" && nationArray[i] === "Rusviet" && banIllegal) {
@@ -152,7 +163,8 @@ function App() {
             }
 
             // setting rememberance arrays
-                setRememberNation(nationArray)
+            setRememberNation(nationArray)
+            setRememberBoard(boardArray)
 
             // updating state
             setNation(nationArray)
