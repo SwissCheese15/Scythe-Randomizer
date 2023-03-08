@@ -12,7 +12,7 @@ The randomizer allows users to select the number of players, what expansions the
 ### Future Tweaks
 - Adding info section on the page
 - Customizable player names
-- Mobile Version (native or web
+- Mobile Version (native or web)
 
 ---------------------------------------------------------------------------------
 
