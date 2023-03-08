@@ -46,7 +46,11 @@
     }
   } */
 
-.title {
+body {
+    margin: 0;
+}
+
+.header {
     height: 8vh;
     font-size: 2vh;
 }
