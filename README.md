@@ -1,6 +1,6 @@
-Live Website https://randomizer-three.vercel.app
-
 ## Random game generator for the board game "Scythe"
+
+Live Website https://randomizer-three.vercel.app
 
 Scythe is a large scale strategy board game. Yes, you read that correctly. An actual board game you can play at a table with friends and family. They still exist ;)
 
@@ -14,7 +14,9 @@ The randomizer allows users to select the number of players, what expansions the
 - Customizable player names
 - Mobile Version (native or web)
 
+### Preview
 ---------------------------------------------------------------------------------
+
 
 <img width="1211" alt="Bildschirmfoto 2023-02-02 um 00 58 48" src="https://user-images.githubusercontent.com/110164826/216196032-93d73077-98f7-46b5-b179-df7e503f675f.png">
 
