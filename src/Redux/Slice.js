@@ -25,9 +25,11 @@ export const RandomizerSlice = createSlice({
         moreInfo: false
     },
     reducers: {
+        // reducer to toggle the boolean states
         toggle: (state, action) => {
             state[action.payload[0]] = action.payload[1]
         }, 
+        // change states with ["name of state", "new value"] syntax
         changeState: (state, action) => {
             state[action.payload[0]] = action.payload[1]
         }
