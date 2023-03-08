@@ -12,6 +12,6 @@ root.render(
         <Provider store={Store}>
             <App />
         </Provider>
-        <Analytics/>
+        <Analytics debug={true}/>
     </>
 );
