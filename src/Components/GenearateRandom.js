@@ -14,6 +14,7 @@ const GenerateRandom = () => {
     const rememberBoard = useSelector((state) => state.Randomizer.rememberBoard)
     const ready = useSelector((state) => state.Randomizer.ready)
     const rotate = useSelector((state) => state.Randomizer.rotate)
+    const fenrisHome = useSelector((state) => state.Randomizer.fenrisHome)
  
     // Options
     const nations = ["Nordic", "Rusviet", "Crimea", "Polania", "Saxony", "Albion", "Togawa", "Fenris", "Vesna"]
@@ -87,9 +88,11 @@ const GenerateRandom = () => {
         checkRepeat()
 
         // generate nation specific info when Vesna or Fenris are selected
+        fenrisVesnaHome(
+            nationArray.includes("Fenris") ? true : false,
+            nationArray.includes("Vesna") ? true : false
+        )
         nationArray.includes("Vesna") ? randomMechs(true) : randomMechs(false)
-        nationArray.includes("Vesna") ? randomVesnaHome(true) : randomVesnaHome(false)
-        nationArray.includes("Fenris") ? randomFenrisHome(true) : randomFenrisHome(false)
 
         // Random Board Function ---------------------------------------------------------
      
@@ -186,11 +189,39 @@ const GenerateRandom = () => {
         }
         else dispatch(changeState(["mechAbilities", null]))
     }
-    const randomFenrisHome = (bool) => {
-        dispatch(changeState(["fenrisHome", bool ? nations[Math.floor(Math.random()*7)] : null]))
-    }
-    const randomVesnaHome = (bool) => {
-        dispatch(changeState(["vesnaHome", bool ? nations[Math.floor(Math.random()*7)] : null]))
+
+    const fenrisVesnaHome = (fenris, vesna) => {
+        let fenrisStart = ""
+        let vesnaStart = ""
+
+        const randomFenrisHome = () => {
+            fenrisStart = nations[Math.floor(Math.random()*7)]
+            // check if home is already taken
+            if (nationArray.includes(fenrisStart)) {
+                randomFenrisHome()
+            } else {
+                dispatch(changeState(["fenrisHome", fenrisStart]))
+            }
+        }
+        if (fenris) {randomFenrisHome()}
+
+        const randomVesnaHome = () => {
+            vesnaStart = nations[Math.floor(Math.random()*7)]
+            // check if home is already taken
+            if (nationArray.includes(vesnaStart)) {
+                randomVesnaHome()
+            } 
+            // check if home is already taken by Fenris
+            if (vesnaStart === fenrisStart) {
+                randomVesnaHome()
+            }
+            else {
+                dispatch(changeState(["vesnaHome", vesnaStart]))
+            }
+        }
+        if (vesna) {randomVesnaHome()}
+    
+
     }
 
     // window resize
