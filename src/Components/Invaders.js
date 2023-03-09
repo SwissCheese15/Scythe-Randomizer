@@ -16,10 +16,16 @@ const Invaders = () => {
         if (bool && !rotate && !moreInfo) {
             r.style.setProperty("--VesnaPosX", "19vw");
             r.style.setProperty("--FenrisPosX", "75vw");
+            // mobile emblem positioning
+            r.style.setProperty("--mobVesnaPosX", "7vw");
+            r.style.setProperty("--mobFenrisPosX", "87vw");
         }
         if (!bool && !rotate && !moreInfo) {
             r.style.setProperty("--VesnaPosX", "26vw");
             r.style.setProperty("--FenrisPosX", "68vw");
+            // mobile emblem positioning
+            r.style.setProperty("--mobVesnaPosX", "17vw");
+            r.style.setProperty("--mobFenrisPosX", "77vw");
         }
     }
 

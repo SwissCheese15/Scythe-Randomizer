@@ -1,4 +1,5 @@
-import './App.css';
+import './Styling/app.css';
+import './Styling/mobile.css'
 import PlayerNumber from './Components/PlayerNumber';
 import Invaders from './Components/Invaders';
 import Rise from './Components/Rise';

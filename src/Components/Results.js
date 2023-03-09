@@ -12,16 +12,14 @@ const Results = () => {
         <div className='nationsAndBoards'>
         <div className='nations'>
             {nation.map((team, index) => 
-                <div key={team}>
-                    <p id={index + 1} className={ready ? "invisible" : ""}>Player {index + 1}: </p>
-                    <p id={"actual"} className={!moreInfo || ready ? "invisible" : ""}>{team}</p>
-                </div>
-            )}
-        </div>
-        <div className='boards'>
-            {board.map((board) => 
-                <div key={board}>
-                    <p id={"actual"} className={!moreInfo || ready ? "invisible" : ""}>{board}</p>
+                <div key={team} className="nationDiv">
+                    <p id={index + 1} className={ready ? "invisible" : ""}>
+                        Player {index + 1}:
+                    </p>
+                    <p className={!moreInfo ? "invisible" : ""}>
+                        &nbsp;&nbsp;{team}
+                        &nbsp;&nbsp;{board[index]}
+                    </p>
                 </div>
             )}
         </div>

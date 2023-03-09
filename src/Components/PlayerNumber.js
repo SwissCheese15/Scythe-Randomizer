@@ -12,7 +12,7 @@ const PlayerNumber = () => {
     }
 
     return(
-        <div className='optionSubDiv'>
+        <div className='playerSubDiv'>
             <p>Select Number of Players</p>
             <div className='playersBtnDiv'>
                 <button className={players === 1 ? "selected" : ""} onClick={() => handlePlayerNumber(1)}>1</button>

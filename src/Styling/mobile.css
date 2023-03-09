@@ -1,0 +1,158 @@
+/* Mobile Support */
+
+@media only screen and (max-width: 600px) {
+
+    :root {
+        --mobVesnaPosX: 17vw;
+        --mobVesnaPosY: 42vh;
+        --mobTogawaPosX: 17vw;
+        --mobTogawaPosY: 42vh;
+        --mobNordicPosX: 27vw;
+        --mobNordicPosY: 42vh;
+        --mobRusvietPosX: 37vw;
+        --mobRusvietPosY: 42vh;
+        --mobCrimeaPosX: 47vw;
+        --mobCrimeaPosY: 42vh;
+        --mobPolaniaPosX: 57vw;
+        --mobPolaniaPosY: 42vh;
+        --mobSaxonyPosX: 67vw;
+        --mobSaxonyPosY: 42vh;
+        --mobAlbionPosX: 77vw;
+        --mobAlbionPosY: 42vh;
+        --mobFenrisPosX: 77vw;
+        --mobFenrisPosY: 42vh;
+    
+        --mainColor: rgb(196, 144, 144);
+      }
+
+    #emblems img {
+        height: 5vh;
+        width: 5vh;
+    }
+
+    .options {
+        width: 90vw;
+        height: 25vh;
+        display: grid;
+        grid-template-rows: 2;
+        grid-template-columns: 4;
+    }
+
+    button {
+        height: 5vh;
+        width: 5vh;
+      }
+
+    .playerSubDiv {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    /* Moving the emblems */
+    #moveVesna {
+        left: var(--mobVesnaPosX) !important;
+        top: var(--mobVesnaPosY) !important;
+    }
+
+    #moveTogawa {
+        left: var(--mobTogawaPosX) !important;
+        top: var(--mobTogawaPosY) !important;
+    }
+
+    #moveNordic {
+        left: var(--mobNordicPosX) !important;
+        top: var(--mobNordicPosY) !important;
+    }
+
+    #moveRusviet {
+        left: var(--mobRusvietPosX) !important;
+        top: var(--mobRusvietPosY) !important;
+    }
+
+    #moveCrimea {
+        left: var(--mobCrimeaPosX) !important;
+        top: var(--mobCrimeaPosY) !important;
+    }
+
+    #movePolania {
+        left: var(--mobPolaniaPosX) !important;
+        top: var(--mobPolaniaPosY) !important;
+    }
+
+    #moveSaxony {
+        left: var(--mobSaxonyPosX) !important;
+        top: var(--mobSaxonyPosY) !important;
+    }
+
+    #moveAlbion {
+        left: var(--mobAlbionPosX) !important;
+        top: var(--mobAlbionPosY) !important;
+    }
+
+    #moveFenris {
+        left: var(--mobFenrisPosX) !important;
+        top: var(--mobFenrisPosY) !important;
+    }
+
+    .randomBtnDiv {
+        height: 16vh;
+        width: 50vw;
+    }
+
+    #randomBtn {
+        width: 30vw;
+        font-size: 1.6vh;
+        background-color: rgb(42, 42, 42);
+    }
+    
+    #resetBtn {
+        width: 13vw;
+        font-size: 1.6vh;
+    }
+    
+    .alert {
+        top: 60%;
+    }
+
+    .nationsAndBoards {
+        font-size: 1.7vh;
+        width: 40vw;
+    }
+    
+    .nations {
+        width: 35vw;
+        flex-direction: column;
+        padding-left: 18vw;
+    }
+    
+    .nationDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 8vh;
+        line-height: 2vh;
+    }
+    
+    .nationDiv p {
+        margin: 0;
+    }
+
+    .nationDiv p:nth-child(2) {
+        margin-left: -0.8vh;
+    }
+
+    #moreInfo {
+        font-size: 1.6vh;
+        padding: 10px;
+    }
+    #moreInfo div {
+        margin: 0;
+    }
+
+    #airshipInfo {
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+  }

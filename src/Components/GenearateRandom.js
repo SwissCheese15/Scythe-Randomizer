@@ -207,6 +207,11 @@ const GenerateRandom = () => {
                 let y = Math.floor(coordinates.y) -vh*0.01 + "px"
                 r.style.setProperty("--" + nation[i-1] + "PosX", x);
                 r.style.setProperty("--" + nation[i-1] + "PosY", y);
+                // mobile emblem positions
+                let mobX = Math.floor(coordinates.x) -vh*0.065 + "px"
+                let mobY = Math.floor(coordinates.y) -vh*0.001 + "px"
+                r.style.setProperty("--mob" + nation[i-1] + "PosX", mobX);
+                r.style.setProperty("--mob" + nation[i-1] + "PosY", mobY);
             }
         }
     }
@@ -237,7 +242,12 @@ const GenerateRandom = () => {
                     let y = Math.floor(coordinates.y) -vh*0.01 + "px"
                     r.style.setProperty("--" + nationArray[i-1] + "PosX", x);
                     r.style.setProperty("--" + nationArray[i-1] + "PosY", y);
-                    
+                    // mobile emblem positions
+                    let mobX = Math.floor(coordinates.x) -vh*0.065 + "px"
+                    let mobY = Math.floor(coordinates.y) -vh*0.001 + "px"
+                    r.style.setProperty("--mob" + nationArray[i-1] + "PosX", mobX);
+                    r.style.setProperty("--mob" + nationArray[i-1] + "PosY", mobY);
+
                     await delay(3000)
                 }
                 dispatch(changeState(["rotate", false]))

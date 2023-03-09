@@ -24,7 +24,7 @@
   }
 
 .app {
-    background-image: url("../public/images/cover.jpg");
+    background-image: url("../../public/images/cover.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -38,13 +38,6 @@
     font-weight: 500;
     overflow: hidden;
 }
-
-/* @media only screen and (max-width: 1200px) {
-    .app {
-        background-repeat: unset;
-        color: red
-    }
-  } */
 
 body {
     margin: 0;
@@ -162,6 +155,23 @@ button:hover {
     transform: translate(-50%, -50%);
     text-align: center;
     border-radius: 8px;
+}
+
+.playerSubDiv {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.playerSubDiv p {
+    height: 2.4vh;
+}
+
+.playerSubDiv button {
+    margin-right: 5px;
+}
+
+.playerSubDiv div {
+    display: flex;
 }
 
 .optionSubDiv {
@@ -295,15 +305,15 @@ button:hover {
     max-height: 100%;
 }
 
-.nations div {
+.nationDiv {
     display: flex;
-    justify-content: flex-start;
-    line-height: 4.2vh;
+    flex-direction: row;
+    justify-content: space-between;
     max-height: 7vh;
 }
 
-.nations p {
-    margin-left: 2vh;
+.nationDiv p {
+    display: flex;
     min-width: fit-content;
 }
 

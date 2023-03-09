@@ -21,7 +21,7 @@ const MoreInfo = () => {
                 {vesnaHome ? <p>Vesna Home: {vesnaHome}</p> : ""}
                 {mechAbilities ? <p>Mech Abilities: {mechAbilities.map((a) => <li key={a}>{a}</li>)}</p> : ""}
             </div>
-            <div>
+            <div id="airshipInfo">
                 {rise ? <p>Mode: {mode}</p> : "" }
                 {wind ? <p>Offensive Airship: {offensiveAirship}</p> : ""}
                 {wind ? <p>Defensive Airship: {defensiveAirship}</p> : ""}
