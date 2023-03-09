@@ -103,13 +103,13 @@
 
     #randomBtn {
         width: 30vw;
-        font-size: 1.6vh;
+        font-size: 1.4vh;
         background-color: rgb(42, 42, 42);
     }
     
     #resetBtn {
         width: 13vw;
-        font-size: 1.6vh;
+        font-size: 1.4vh;
     }
     
     .alert {
