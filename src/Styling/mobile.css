@@ -118,7 +118,7 @@
 
     .nationsAndBoards {
         font-size: 1.7vh;
-        width: 40vw;
+        width: 35vw;
     }
     
     .nations {
@@ -137,6 +137,7 @@
     
     .nationDiv p {
         margin: 0;
+        margin-right: 1vw;
     }
 
     .nationDiv p:nth-child(2) {
@@ -146,6 +147,7 @@
     #moreInfo {
         font-size: 1.6vh;
         padding: 10px;
+        margin-left: 5vw;
     }
     #moreInfo div {
         margin: 0;
