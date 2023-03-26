@@ -61,7 +61,7 @@ button {
   align-items: center;
   border: 0;
   border-radius: 8px;
-  color: #fff;
+  color: white;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -95,7 +95,7 @@ button:hover {
 
 .playersBtnDiv button{
     background: var(--mainColor);
-    color: rgba(0, 0, 0, 0.641);
+    color: rgb(0, 0, 0);
     /* larger font size for numbers to be more visible */
     font-size: 2.2vh;
 }
@@ -118,12 +118,12 @@ button:hover {
 
 .windBtnDiv button {
     background: var(--mainColor);
-    color: rgba(0, 0, 0, 0.641);
+    color: rgb(0, 0, 0);
 }
 
 .banBtnDiv button {
     background: var(--mainColor);
-    color: rgba(0, 0, 0, 0.641);
+    color: rgb(0, 0, 0);
 }
 
 .randomBtnDiv {
@@ -333,7 +333,7 @@ button:hover {
     opacity: 1;
     transition: opacity 2s;
     background: var(--mainColor);
-    color: rgba(0, 0, 0, 0.641);
+    color: rgb(0, 0, 0);
     border: 2px solid white;
     padding: 5px;
     padding-right: 20px;

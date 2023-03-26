@@ -7,16 +7,16 @@ return (
         </div>
         <div className='contactLinks'>
             <a href='https://github.com/SwissCheese15' target="_blank" title='GitHub'>
-                <img src='images/gitHub.png'/>
+                <img src='images/gitHub.png' alt="Github Logo" />
             </a>
             <a href='https://job-finding-universe.vercel.app' target="_blank" title="universe">
-                <img src='images/rocket.png'/>
+                <img src='images/rocket.png' alt="Rocket Symbol" />
             </a>
             <a href='https://linkedin.com/in/manuel-winkler-software-developer' target="_blank" title="linkedin">
-                <img src='images/linkedin.png'/>
+                <img src='images/linkedin.png' alt="Linkedin Logo" />
             </a>
             <a href='mailto:manuelwinkler@bluewin.ch' target="_blank" title='e-mail'>
-                <img src='images/email.png'/>
+                <img src='images/email.png' alt="Email Symbol" />
             </a>
         </div>
     </div>
