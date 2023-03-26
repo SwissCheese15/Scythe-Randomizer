@@ -24,7 +24,7 @@
   }
 
 .app {
-    background-image: url("../../public/images/cover.jpg");
+    background-image: url("../../public/images/cover.webp");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -362,6 +362,7 @@ button:hover {
 
 .contactLinks img {
     height: 3.5vh;
+    width: 3.5vh;
     margin: 0 1vh 3vh 1vh;
 }
 

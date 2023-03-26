@@ -14,7 +14,6 @@ const GenerateRandom = () => {
     const rememberBoard = useSelector((state) => state.Randomizer.rememberBoard)
     const ready = useSelector((state) => state.Randomizer.ready)
     const rotate = useSelector((state) => state.Randomizer.rotate)
-    const fenrisHome = useSelector((state) => state.Randomizer.fenrisHome)
  
     // Options
     const nations = ["Nordic", "Rusviet", "Crimea", "Polania", "Saxony", "Albion", "Togawa", "Fenris", "Vesna"]
