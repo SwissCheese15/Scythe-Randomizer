@@ -24,6 +24,7 @@
   }
 
 .app {
+    background-image: url("../../public/images/cover.png");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
