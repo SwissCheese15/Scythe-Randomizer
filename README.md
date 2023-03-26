@@ -14,6 +14,12 @@ The randomizer allows users to select the number of players, what expansions the
 - Customizable player names
 - Layout fixes
 
+### Lighthouse
+I'm happy to share the current Chrome Lighthouse ratings of the Webpage
+
+![Bildschirmfoto 2023-03-27 um 01 05 42](https://user-images.githubusercontent.com/110164826/227810498-a06da3e3-5db2-46ff-8216-8d6f43611ad9.png)
+
+
 ### Analytics
 To get an idea of the sites traffic I installed Vercel Analytics. It's a cookie free shallow tracker of the site's usage.
 I'm happy to see that it has had a total of over 300 visitors from all over the world since it's initiaisation on March 7th 2023. There are even some "return customers". (data from 22.03.2023)
