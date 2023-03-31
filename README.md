@@ -15,7 +15,7 @@ The randomizer allows users to select the number of players, what expansions the
 - Layout fixes
 
 ### Lighthouse
-I'm happy to share the current Chrome Lighthouse ratings of the Webpage
+I'm happy to share the current Chrome Lighthouse ratings of the Webpage 🎉
 
 ![Bildschirmfoto 2023-03-27 um 01 05 42](https://user-images.githubusercontent.com/110164826/227810498-a06da3e3-5db2-46ff-8216-8d6f43611ad9.png)
 
